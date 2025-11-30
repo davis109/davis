@@ -372,45 +372,95 @@ class Portfolio {
 
     // Scroll animations (GSAP-like)
     setupScrollAnimations() {
+        // Enhanced Intersection Observer with smooth reveal
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
+                    entry.target.classList.add('active');
                     
-                    // Stagger animation for cards
+                    // Stagger animation for grids
                     if (entry.target.classList.contains('expertise-grid') ||
                         entry.target.classList.contains('projects-list') ||
-                        entry.target.classList.contains('timeline')) {
+                        entry.target.classList.contains('achievements-grid')) {
                         this.staggerChildren(entry.target);
+                    }
+                    
+                    // Timeline items stagger
+                    if (entry.target.classList.contains('timeline')) {
+                        this.staggerTimeline(entry.target);
                     }
                 }
             });
         }, observerOptions);
 
-        // Observe sections and cards
-        document.querySelectorAll('section, .expertise-card, .project-card, .timeline-item').forEach(el => {
-            observer.observe(el);
+        // Add scroll-reveal classes to elements
+        document.querySelectorAll('.section-title').forEach(el => {
+            el.classList.add('scroll-reveal');
+            revealObserver.observe(el);
+        });
+
+        document.querySelectorAll('.expertise-card').forEach((el, index) => {
+            if (index % 2 === 0) {
+                el.classList.add('scroll-reveal-left');
+            } else {
+                el.classList.add('scroll-reveal-right');
+            }
+            revealObserver.observe(el);
+        });
+
+        document.querySelectorAll('.project-card').forEach((el, index) => {
+            el.classList.add('scroll-reveal-scale');
+            revealObserver.observe(el);
+        });
+
+        document.querySelectorAll('.timeline-item').forEach(el => {
+            el.classList.add('scroll-reveal-left');
+            revealObserver.observe(el);
+        });
+
+        document.querySelectorAll('.achievement-card').forEach(el => {
+            el.classList.add('scroll-reveal');
+            revealObserver.observe(el);
+        });
+
+        document.querySelectorAll('.testimonial-card').forEach(el => {
+            el.classList.add('scroll-reveal-fade');
+            revealObserver.observe(el);
+        });
+
+        // Hero section elements
+        document.querySelectorAll('.hero-badge, .hero-description, .hero-stats, .hero-cta').forEach(el => {
+            el.classList.add('scroll-reveal');
+            revealObserver.observe(el);
+        });
+
+        // Contact section
+        document.querySelectorAll('.contact-text, .contact-form, .code-snippet').forEach(el => {
+            el.classList.add('scroll-reveal');
+            revealObserver.observe(el);
         });
     }
 
     staggerChildren(parent) {
-        const children = parent.children;
-        Array.from(children).forEach((child, index) => {
+        const children = parent.querySelectorAll('.expertise-card, .project-card, .achievement-card');
+        children.forEach((child, index) => {
             setTimeout(() => {
-                child.style.opacity = '0';
-                child.style.transform = 'translateY(30px)';
-                child.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                
-                setTimeout(() => {
-                    child.style.opacity = '1';
-                    child.style.transform = 'translateY(0)';
-                }, 50);
-            }, index * 100);
+                child.classList.add('active');
+            }, index * 150);
+        });
+    }
+
+    staggerTimeline(timeline) {
+        const items = timeline.querySelectorAll('.timeline-item');
+        items.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.add('active');
+            }, index * 200);
         });
     }
 
@@ -423,19 +473,28 @@ class Portfolio {
                 window.requestAnimationFrame(() => {
                     const scrolled = window.pageYOffset;
                     
-                    // Parallax for hero section
+                    // Smooth parallax for hero section
                     const hero = document.querySelector('.hero-content');
-                    if (hero) {
+                    if (hero && scrolled < 800) {
                         hero.style.transform = `translateY(${scrolled * 0.3}px)`;
                         hero.style.opacity = 1 - scrolled / 800;
                     }
 
-                    // Parallax for section titles
-                    document.querySelectorAll('.section-title').forEach(title => {
-                        const rect = title.getBoundingClientRect();
+                    // Parallax for project images
+                    document.querySelectorAll('.project-image').forEach(img => {
+                        const rect = img.getBoundingClientRect();
                         if (rect.top < window.innerHeight && rect.bottom > 0) {
-                            const offset = (window.innerHeight - rect.top) * 0.1;
-                            title.style.transform = `translateX(${offset}px)`;
+                            const offset = (window.innerHeight - rect.top) * 0.05;
+                            img.style.transform = `translateY(${offset}px)`;
+                        }
+                    });
+
+                    // Smooth parallax for section backgrounds
+                    document.querySelectorAll('.expertise, .projects, .experience').forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        if (rect.top < window.innerHeight && rect.bottom > 0) {
+                            const offset = (window.innerHeight - rect.top) * 0.03;
+                            section.style.backgroundPositionY = `${offset}px`;
                         }
                     });
 
@@ -444,7 +503,7 @@ class Portfolio {
 
                 ticking = true;
             }
-        });
+        }, { passive: true });
     }
 
     // Custom cursor effect

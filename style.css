@@ -31,6 +31,7 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    scroll-padding-top: 80px;
 }
 
 body {
@@ -41,9 +42,12 @@ body {
     overflow-x: hidden;
     position: relative;
     transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Loading Screen */
+/* Loading Screen - High priority */
 .loading-screen {
     position: fixed;
     top: 0;
@@ -56,6 +60,8 @@ body {
     justify-content: center;
     z-index: 10000;
     transition: opacity 0.5s ease, visibility 0.5s ease;
+    opacity: 1;
+    visibility: visible;
 }
 
 body.loaded .loading-screen {
@@ -66,6 +72,8 @@ body.loaded .loading-screen {
 
 .loader-content {
     text-align: center;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .loader-logo {
@@ -73,12 +81,14 @@ body.loaded .loading-screen {
     height: 100px;
     margin: 0 auto 2rem;
     animation: logoFloat 2s ease-in-out infinite;
+    opacity: 1 !important;
 }
 
 .loader-logo img {
     width: 100%;
     height: 100%;
     filter: drop-shadow(0 0 30px var(--glow-color));
+    transform: none !important;
 }
 
 .loader-logo .profile-logo {
@@ -910,7 +920,33 @@ section {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
+
+/* Flash card spin animation */
+.expertise-card.scroll-reveal-left,
+.expertise-card.scroll-reveal-right {
+    opacity: 0;
+    transform: rotateY(1080deg) rotateX(180deg) scale(0.2);
+    transition: all 1.4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+    filter: blur(10px);
+}
+
+.expertise-card.scroll-reveal-left.active,
+.expertise-card.scroll-reveal-right.active {
+    opacity: 1;
+    transform: rotateY(0deg) rotateX(0deg) scale(1);
+    filter: blur(0px);
+}
+
+/* Stagger delays for spinning effect */
+.expertise-card:nth-child(1) { transition-delay: 0s; }
+.expertise-card:nth-child(2) { transition-delay: 0.12s; }
+.expertise-card:nth-child(3) { transition-delay: 0.24s; }
+.expertise-card:nth-child(4) { transition-delay: 0.36s; }
+.expertise-card:nth-child(5) { transition-delay: 0.48s; }
+.expertise-card:nth-child(6) { transition-delay: 0.6s; }
 
 .expertise-card::before {
     content: '';
@@ -1248,7 +1284,29 @@ section {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
+
+/* Flash card spin animation for achievements */
+.achievement-card.scroll-reveal {
+    opacity: 0;
+    transform: rotateY(900deg) rotateZ(180deg) scale(0.2);
+    transition: all 1.3s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+    filter: blur(8px);
+}
+
+.achievement-card.scroll-reveal.active {
+    opacity: 1;
+    transform: rotateY(0deg) rotateZ(0deg) scale(1);
+    filter: blur(0px);
+}
+
+/* Stagger delays for achievement cards */
+.achievement-card:nth-child(1) { transition-delay: 0s; }
+.achievement-card:nth-child(2) { transition-delay: 0.15s; }
+.achievement-card:nth-child(3) { transition-delay: 0.3s; }
+.achievement-card:nth-child(4) { transition-delay: 0.45s; }
 
 .achievement-card::before {
     content: '';
@@ -1854,4 +1912,81 @@ section {
         padding: 1rem;
         margin-bottom: 1.5rem;
     }
+}
+
+/* Scroll Animation Classes */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-reveal-scale {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.scroll-reveal-fade {
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal-fade.active {
+    opacity: 1;
+}
+
+/* Stagger animation delays */
+.scroll-reveal:nth-child(1) { transition-delay: 0.1s; }
+.scroll-reveal:nth-child(2) { transition-delay: 0.2s; }
+.scroll-reveal:nth-child(3) { transition-delay: 0.3s; }
+.scroll-reveal:nth-child(4) { transition-delay: 0.4s; }
+.scroll-reveal:nth-child(5) { transition-delay: 0.5s; }
+.scroll-reveal:nth-child(6) { transition-delay: 0.6s; }
+
+/* Smooth parallax effect */
+.parallax-section {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Smooth card hover with 3D effect */
+.expertise-card, .project-card, .achievement-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
 }
