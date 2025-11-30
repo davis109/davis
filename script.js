@@ -14,6 +14,7 @@ class Portfolio {
         this.setupParallax();
         this.setupCursorEffect();
         this.setupFormValidation();
+        this.setupNameAnimation();
         this.setupTypingEffect();
         this.setupStatsCounter();
         this.setupScrollProgress();
@@ -736,6 +737,30 @@ class Portfolio {
                 }, index * 100);
             });
         }, 100);
+    }
+
+    // Epic name animation with letter-by-letter reveal
+    setupNameAnimation() {
+        const nameElement = document.getElementById('nameAnimation');
+        if (!nameElement) return;
+
+        const name = 'DAVIS SEBASTIAN';
+        const letters = name.split('');
+        
+        // Wait for loading screen to finish
+        setTimeout(() => {
+            // Clear and prepare
+            nameElement.innerHTML = '';
+            
+            // Create letter spans
+            letters.forEach((letter, index) => {
+                const span = document.createElement('span');
+                span.className = 'letter';
+                span.textContent = letter === ' ' ? '\u00A0' : letter; // Use non-breaking space
+                span.style.setProperty('--i', index);
+                nameElement.appendChild(span);
+            });
+        }, 2300); // Run after loading screen (2200ms + 100ms buffer)
     }
 
     // Typing effect for hero subtitle
