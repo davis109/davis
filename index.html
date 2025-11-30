@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Davis Sebastian - Software Developer | MERN Stack Expert | AI Enthusiast | Commonwealth Bank Apprentice">
+    <meta name="keywords" content="Davis Sebastian, Software Developer, MERN Stack, Full Stack Developer, React, Node.js, Python, AI, Machine Learning">
+    <meta name="author" content="Davis Sebastian">
+    <meta property="og:title" content="Davis Sebastian - Software Developer Portfolio">
+    <meta property="og:description" content="Full Stack Developer specializing in MERN stack, Python, and AI solutions">
+    <meta property="og:type" content="website">
+    <title>Davis Sebastian - Software Developer Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar"></div>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <button class="fab-button" id="scrollToTop" aria-label="Scroll to top">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+        </button>
+        <a href="https://github.com/davis109" target="_blank" class="fab-button" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+        </a>
+        <a href="mailto:sebastiandavis109@gmail.com" class="fab-button" aria-label="Email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <img src="images/logo.svg" alt="Loading">
+            </div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <p class="loader-text">Loading Portfolio...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/logo.svg" alt="DS Logo">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hero-section" class="nav-link">00 // home</a></li>
+                <li><a href="#expertise" class="nav-link">01 // expertise</a></li>
+                <li><a href="#projects" class="nav-link">02 // projects</a></li>
+                <li><a href="#experience" class="nav-link">03 // experience</a></li>
+                <li><a href="#testimonials" class="nav-link">04 // testimonials</a></li>
+                <li><a href="#achievements" class="nav-link">05 // achievements</a></li>
+                <li><a href="#contact" class="nav-link">06 // contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="DS_resume.pdf" download class="btn-resume">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Resume
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero-section" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="name-highlight">DAVIS SEBASTIAN</span>
+                </h1>
+                <h2 class="hero-subtitle">SOFTWARE DEVELOPER & FULL STACK ENGINEER</h2>
+                <p class="hero-description">
+                    Software Developer with expertise in the MERN stack, Python, and Java. 
+                    Proven ability to build impactful applications from concept to deployment. 
+                    Adept at leveraging cloud technologies like AWS and developing scalable solutions 
+                    with a strong foundation in data structures and algorithms.
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Marquee -->
+    <section class="tech-marquee">
+        <div class="marquee">
+            <div class="marquee-content">
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">MongoDB</span>
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">TensorFlow</span>
+                <span class="tech-badge">AWS</span>
+                <span class="tech-badge">Docker</span>
+                <span class="tech-badge">Express.js</span>
+                <span class="tech-badge">Flask</span>
+                <span class="tech-badge">OpenCV</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">Git</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">MongoDB</span>
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">TensorFlow</span>
+                <span class="tech-badge">AWS</span>
+                <span class="tech-badge">Docker</span>
+                <span class="tech-badge">Express.js</span>
+                <span class="tech-badge">Flask</span>
+                <span class="tech-badge">OpenCV</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">Git</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="expertise">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-number">01</span>
+                Expertise
+            </h2>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="card-icon">⚛️</div>
+                    <h3>MERN Stack Development</h3>
+                    <p>Building full-stack web applications using MongoDB, Express.js, React, and Node.js with focus on scalability and clean architecture.</p>
+                    <div class="tech-tags">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>Express.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="card-icon">🐍</div>
+                    <h3>Python & Automation</h3>
+                    <p>Developing automation tools, web scraping solutions, and backend services using Python, Flask, and Selenium.</p>
+                    <div class="tech-tags">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>Selenium</span>
+                        <span>OpenCV</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="card-icon">🧠</div>
+                    <h3>AI & Computer Vision</h3>
+                    <p>Building AI-powered solutions using TensorFlow, OpenCV for image processing, and machine learning models for real-world applications.</p>
+                    <div class="tech-tags">
+                        <span>TensorFlow</span>
+                        <span>OpenCV</span>
+                        <span>Python</span>
+                        <span>AI/ML</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="card-icon">☁️</div>
+                    <h3>Cloud & Deployment</h3>
+                    <p>Deploying and managing applications on AWS (EC2, S3), Docker containerization, and Firebase for real-time features.</p>
+                    <div class="tech-tags">
+                        <span>AWS EC2</span>
+                        <span>AWS S3</span>
+                        <span>Docker</span>
+                        <span>Firebase</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="card-icon">🗄️</div>
+                    <h3>Database Management</h3>
+                    <p>Designing and optimizing databases using MongoDB, MySQL, and PostgreSQL for efficient data storage and retrieval.</p>
+                    <div class="tech-tags">
+                        <span>MongoDB</span>
+                        <span>MySQL</span>
+                        <span>PostgreSQL</span>
+                        <span>SQL</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="card-icon">🛠️</div>
+                    <h3>Developer Tools</h3>
+                    <p>Proficient with modern development tools including Git, VS Code, Postman, and Android Studio for efficient workflow.</p>
+                    <div class="tech-tags">
+                        <span>Git/GitHub</span>
+                        <span>VS Code</span>
+                        <span>Postman</span>
+                        <span>Android Studio</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-number">02</span>
+                Featured Projects
+            </h2>
+            <div class="projects-list">
+                <div class="project-card">
+                    <div class="project-image project-ai">
+                        <img src="images/viton.png" alt="Virtual Try-On Application" class="project-img">
+                        <div class="project-overlay">
+                            <span>AI & Computer Vision</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Virtual Try-On for Ecommerce</h3>
+                        <p>Engineered an AI-powered virtual try-on solution using Python, OpenCV, and TensorFlow to enhance the online shopping experience on e-commerce platforms. Integrated third-party APIs for secure file handling and optimized image processing pipelines for real-time performance.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>OpenCV</span>
+                            <span>TensorFlow</span>
+                            <span>APIs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image project-mern">
+                        <img src="images/lms.png" alt="Learning Management System" class="project-img">
+                        <div class="project-overlay">
+                            <span>Full Stack MERN</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Learning Management System (LMS)</h3>
+                        <p>Architected a full-stack MERN application with JWT for role-based authentication, PayPal for secure payment processing, and Cloudinary for media management. Designed a RESTful API with over 20 endpoints and a NoSQL database schema to manage users, courses, payments, and progress tracking.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                            <span>JWT</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image project-automation">
+                        <img src="images/vtu.png" alt="VTU Results Extractor" class="project-img">
+                        <div class="project-overlay">
+                            <span>Web Automation</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>VTU Results Extractor</h3>
+                        <p>Developed a web automation tool using Python, Flask, and Selenium to scrape, process, and export student results in batches from the university portal. Implemented features for manual CAPTCHA entry, dynamic USN range handling, and robust error handling. Successfully processed over 1,200 student results.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Flask</span>
+                            <span>Selenium</span>
+                            <span>Automation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-number">03</span>
+                Experience
+            </h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="company-logo">
+                            <img src="images/commonwealth-bank.png" alt="Commonwealth Bank">
+                        </div>
+                        <div class="timeline-header">
+                            <h3>Software Engineer Apprentice</h3>
+                            <span class="timeline-date">July 2025 - Present</span>
+                        </div>
+                        <h4 class="company">Commonwealth Bank of Australia</h4>
+                        <p class="location">Bengaluru, Karnataka</p>
+                        <p class="description">
+                            Engaging in a 355-hour structured apprenticeship program focused on in-demand software engineering principles. 
+                            Contributing to enterprise applications by applying skills in full-stack development (MERN), cloud deployment (AWS EC2, S3), 
+                            and data engineering (Python, PySpark).
+                        </p>
+                        <div class="skills-used">
+                            <span>MERN Stack</span>
+                            <span>AWS</span>
+                            <span>Python</span>
+                            <span>PySpark</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="company-logo">
+                            <img src="images/calyirex.png" alt="Calyirex Technologies">
+                        </div>
+                        <div class="timeline-header">
+                            <h3>Full Stack Developer Intern</h3>
+                            <span class="timeline-date">April 2025 - June 2025</span>
+                        </div>
+                        <h4 class="company">Calyirex Technologies Private Limited</h4>
+                        <p class="location">Bengaluru, Karnataka</p>
+                        <p class="description">
+                            Engineered and launched fully responsive websites for 2 early-stage startups using the MERN stack, 
+                            focusing on high performance and clean UI/UX design. Architected and deployed two reusable website templates, 
+                            which streamlined the new client onboarding process and reduced initial project setup time.
+                        </p>
+                        <div class="skills-used">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                            <span>UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="company-logo">
+                            <img src="images/atria.jpeg" alt="Atria Institute of Technology">
+                        </div>
+                        <div class="timeline-header">
+                            <h3>Bachelor of Engineering in Computer Science</h3>
+                            <span class="timeline-date">Dec 2022 - May 2026</span>
+                        </div>
+                        <h4 class="company">Atria Institute of Technology</h4>
+                        <p class="location">Bengaluru, Karnataka</p>
+                        <p class="description">
+                            Currently pursuing B.E. in Computer Science and Engineering with a CGPA of 8.963. 
+                            Led university football team as Vice-Captain, securing victories in multiple state-level, inter-collegiate tournaments. 
+                            Awarded 1st Place at Inter-School Science Exhibition for developing a Real-Time PPE Compliance Monitor.
+                        </p>
+                        <div class="skills-used">
+                            <span>DSA</span>
+                            <span>OOP</span>
+                            <span>DBMS</span>
+                            <span>Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-number">04</span>
+                What People Say
+            </h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-card active">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        Davis demonstrated exceptional skills in full-stack development during his internship. 
+                        His ability to learn quickly and deliver high-quality work on tight deadlines was impressive. 
+                        The website templates he created are still being used for client projects.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Calyirex Technologies</h4>
+                            <p>Full Stack Development Team</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        As a team member in our Software Engineering Apprenticeship program, Davis has shown remarkable 
+                        dedication to learning enterprise-level development practices. His contributions to our MERN stack 
+                        projects and understanding of cloud deployment have been noteworthy.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Commonwealth Bank of Australia</h4>
+                            <p>Apprenticeship Program</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        The VTU Results Extractor tool Davis created has been a game-changer for our department. 
+                        Processing over 1,200 student results automatically saved countless hours of manual work. 
+                        His attention to error handling and user experience was excellent.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>VTU Students & Faculty</h4>
+                            <p>University Community</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-dots">
+                <button class="dot active" data-index="0"></button>
+                <button class="dot" data-index="1"></button>
+                <button class="dot" data-index="2"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-number">05</span>
+                Achievements & Impact
+            </h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🚀</div>
+                    <div class="achievement-stat" data-count="1200">0</div>
+                    <h3>Results Processed</h3>
+                    <p>Managed the VTU Results Extractor from concept to launch, successfully processing over 1,200 student results and saving countless hours of manual work.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">⚽</div>
+                    <div class="achievement-stat">Vice-Captain</div>
+                    <h3>Leadership in Sports</h3>
+                    <p>Led the university football team as Vice-Captain, securing victories in multiple state-level, inter-collegiate tournaments.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <div class="achievement-stat">1st Place</div>
+                    <h3>Innovation Award</h3>
+                    <p>Awarded 1st Place at Inter-School Science Exhibition for developing a Real-Time PPE Compliance Monitor using AI-powered object detection.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">📈</div>
+                    <div class="achievement-stat" data-count="8.963">0</div>
+                    <h3>Academic Excellence</h3>
+                    <p>Maintaining a CGPA of 8.963 in Computer Science and Engineering while actively contributing to real-world projects and internships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-number">06</span>
+                Let's Connect
+            </h2>
+            <div class="code-snippet">
+                <pre><code><span class="code-comment">// Ready to build something amazing?</span>
+<span class="code-keyword">const</span> <span class="code-variable">collaborate</span> = <span class="code-keyword">async</span> () => {
+  <span class="code-keyword">return</span> <span class="code-keyword">await</span> <span class="code-function">contactDavis</span>();
+};</code></pre>
+            </div>
+            <div class="contact-content">
+                <div class="contact-text">
+                    <h3>Get In Touch</h3>
+                    <p>I'm always interested in hearing about new opportunities, collaborations, or just chatting about software development, MERN stack, AI projects, or football! Feel free to reach out.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <a href="mailto:sebastiandavis109@gmail.com">sebastiandavis109@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span>Bengaluru, Karnataka, India</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <a href="tel:+919739570216">+91 9739570216</a>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/davis-sebastian-638129208" target="_blank" class="social-link" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="https://github.com/davis109" target="_blank" class="social-link" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Web3Forms Access Key - Replace with your own from web3forms.com -->
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <input type="hidden" name="subject" value="New Contact from Portfolio">
+                        <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                        
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Davis Sebastian. Built with passion for creating impactful software.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
