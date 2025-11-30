@@ -227,7 +227,7 @@ class Portfolio {
 
     // Animated stats counter
     setupStatsCounter() {
-        const stats = document.querySelectorAll('.achievement-stat[data-count]');
+        const stats = document.querySelectorAll('.achievement-stat[data-count], .hero-stats .stat-number[data-count]');
         
         const observerOptions = {
             threshold: 0.5,
