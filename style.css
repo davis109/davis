@@ -1112,6 +1112,14 @@ section {
     background: linear-gradient(135deg, #4a0e4e 0%, #1a1a2e 50%, #0f3460 100%);
 }
 
+.project-fullstack {
+    background: linear-gradient(135deg, #1a4d2e 0%, #1e2a3a 50%, #0f2027 100%);
+}
+
+.project-devtools {
+    background: linear-gradient(135deg, #2c003e 0%, #1a1a2e 50%, #0f0f1e 100%);
+}
+
 .project-visual {
     position: absolute;
     top: 50%;
